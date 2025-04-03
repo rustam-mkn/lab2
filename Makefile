@@ -1,6 +1,6 @@
 # Компилятор и флаги
 CXX = clang++
-CXXFLAGS = -fsanitize=address -g -std=c++11 -Wall -Wextra -Wpedantic
+flags = -fsanitize=address -g -std=c++11 -Wall -Wextra -Wpedantic
 
 # Папки
 SRC_DIR = src
@@ -19,11 +19,11 @@ OBJS = $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRCS))
 
 # Правило сборки всего проекта
 $(TARGET): $(OBJS) | $(BIN_DIR)
-	$(CXX) $(CXXFLAGS) $^ -o $@
+	$(CXX) $(flags) $^ -o $@
 
 # Компиляция исходников в объектные файлы
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
-	$(CXX) $(CXXFLAGS) -I$(INC_DIR) -c $< -o $@
+	$(CXX) $(flags) -I$(INC_DIR) -c $< -o $@
 
 # Создание папок
 $(BIN_DIR) $(OBJ_DIR):

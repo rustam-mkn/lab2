@@ -115,9 +115,9 @@ size_t Base32File::base32_decode(const char *encoded, size_t enc_size, char *out
 
     for (size_t i = 0; i < enc_size; i++) {
         char c = encoded[i]; // читаем каждый символ из encoded
-        if (decode_table[c] == -1) continue; // проверка на недопустимые символы (пробел или \n) --> пропускаем их
+        if (decode_table[(unsigned char)c] == -1) continue; // проверка на недопустимые символы (пробел или \n) --> пропускаем их
 
-        buffer = (buffer << 5) | decode_table[c]; // сдвиг буффера влево на 5 бит и добавляем в buffer значение из decode_table
+        buffer = (buffer << 5) | decode_table[(unsigned char)c]; // сдвиг буффера влево на 5 бит и добавляем в buffer значение из decode_table
         bits_in_buffer += 5;
 
         if (bits_in_buffer >= 8) {  
