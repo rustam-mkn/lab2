@@ -1,6 +1,10 @@
 # Компилятор и флаги
 CXX = clang++
+<<<<<<< HEAD
 flags = -fsanitize=address -g -std=c++11 -Wall -Wextra -Wpedantic
+=======
+CXXFLAGS = -fsanitize=address -g -std=c++11 -Wall -Wextra -Wpedantic -fno-strict-aliasing
+>>>>>>> origin/main
 
 # Папки
 SRC_DIR = src
